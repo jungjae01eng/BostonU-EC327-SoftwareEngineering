@@ -62,18 +62,18 @@ int main()
     }
 
 
-    cout << "NUM1" << endl;
-    cout << "0: " << result1[0] << endl;
-    cout << "1: " << result1[1] << endl;
-    cout << "2: " << result1[2] << endl;
-    cout << "3: " << result1[3] << endl;
-    cout << "4: " << result1[4] << endl;
-    cout << endl << "NUM2" << endl;
-    cout << "0: " << result2[0] << endl;
-    cout << "1: " << result2[1] << endl;
-    cout << "2: " << result2[2] << endl;
-    cout << "3: " << result2[3] << endl;
-    cout << "4: " << result2[4] << endl;
+    // cout << "NUM1" << endl;
+    // cout << "0: " << result1[0] << endl;
+    // cout << "1: " << result1[1] << endl;
+    // cout << "2: " << result1[2] << endl;
+    // cout << "3: " << result1[3] << endl;
+    // cout << "4: " << result1[4] << endl;
+    // cout << endl << "NUM2" << endl;
+    // cout << "0: " << result2[0] << endl;
+    // cout << "1: " << result2[1] << endl;
+    // cout << "2: " << result2[2] << endl;
+    // cout << "3: " << result2[3] << endl;
+    // cout << "4: " << result2[4] << endl;
 
     cout << "Hamming distance between " << num1 << " and " << num2 << " when numbers are in ternary format is: " << count_diff << ". [Program Exits]" << endl;
 }
