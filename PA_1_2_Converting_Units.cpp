@@ -25,7 +25,7 @@ int main()
         cout << "Kelvin to Fahrenheit (enter 5)" << endl;
         cout << "Conversion type: ";
         cin >> type;
-    } while (type <= 0 || type < 6);
+    } while (type < 0 && type < 6);
 
     cout << setprecision(3) << fixed;
 
