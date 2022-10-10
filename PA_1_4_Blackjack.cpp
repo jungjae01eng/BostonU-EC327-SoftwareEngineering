@@ -8,24 +8,83 @@
 
 using namespace std;
 
-bool draw = true;
+bool draw;
+
+
+int drawcard() {
+    // initialize random seed
+    srand(time(NULL));
+    int card = rand() % 12 + 2;
+
+    return card;
+}
+
+
+int blackjack() {
+    int card, new_card, total;
+    char user;
+    bool draw = true;
+
+
+    cout << "Welcome to EC327 Blackjack" << endl;
+    
+    card = drawcard();
+    cout << card << endl;
+    new_card = drawcard();
+    card = card + new_card;
+
+    cout << "new card: " << new_card << endl;    
+    cout << "Total: " << card << endl;
+    
+
+    while (draw && card < 21) {
+        cout << "Draw Again (y/n): ";
+        cin >> user;
+        
+        if (user == 'y') {
+            draw = true;
+            new_card = drawcard();
+            card = card + new_card;
+            cout << "new card: " << new_card << endl;
+            cout << "Total: " << card << endl;
+        }
+        else if (user == 'n') {
+            draw = false;
+        }
+        else if (user != 'y' && user != 'n') {
+            void error(int card);
+        }
+    }
+
+
+    if (card == 21) {
+        cout << "Total: " << card << endl;
+        cout << "WON BLACKJACK [Program Exits]";
+    }
+    else if (card > 21) {
+        cout << "Total: " << card << endl;
+        cout << "FAILED BLACKJACK [Program Exits]";
+    }
+    else if (card < 21) {
+        cout << "Total: " << card << endl;
+        cout << "YOU QUIT WITH " << card << " [Program Exits]";
+    }
+
+    return 0;
+}
+
+
+void error(int card) {
+    cout << "Total: " << card << endl;
+    cout << "ERROR OCCURED [Program Exits]" << endl;
+
+    return;
+}
+
 
 int main()
 {
-    cout << "Welcome to EC327 Blackjack" << endl;
-    int card1, card2, total;
-    bool draw;
+    blackjack();
 
-
-    while(draw == true)
-        srand(time(NULL));
-        card1 = rand() % 13 + 1;
-        card2 = rand() % 13 + 1;
-
-        total = card1 + card2;
-
-        cout << "Total: " << card1 << endl;
-        card1 = rand() % 13 + 1;
-        cout << "Total: " << card1 << endl;
-
+    return 0;
 }
