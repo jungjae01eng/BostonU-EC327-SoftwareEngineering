@@ -17,14 +17,12 @@ int main()
     int remainder;
     int count_diff = 0;
 
-
     // receive numbers in between 0 to 100 from user
     do {
         cout << "Enter two numbers between 0-100: ";
         cin >> num1;
         cin >> num2;
     } while (num1 < 0 || num1 > 100);
-
 
     // find the remainder and result for num1
     do {
@@ -35,7 +33,6 @@ int main()
         }
     } while (remainder != 0);
 
-
     // find the remainder and result for num2
     do {
         remainder = num2;
@@ -45,13 +42,11 @@ int main()
         }
     } while (remainder != 0);
 
-
     // get rid of the space that is filled with "0"
     int counter = 4;
     while (result1[counter] == 0 && result2[counter] == 0) {
         counter--;
     }
-
 
     // count different numbers
     while (counter >= 0) {
@@ -60,7 +55,6 @@ int main()
         }
         counter--;
     }
-
 
     // cout << "NUM1" << endl;
     // cout << "0: " << result1[0] << endl;
@@ -75,5 +69,9 @@ int main()
     // cout << "3: " << result2[3] << endl;
     // cout << "4: " << result2[4] << endl;
 
+    // print results
     cout << "Hamming distance between " << num1 << " and " << num2 << " when numbers are in ternary format is: " << count_diff << ". [Program Exits]" << endl;
+
+
+    return 0;
 }

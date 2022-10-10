@@ -21,7 +21,6 @@ int main()
     int second_x, second_y, second_length, second_height;
     int first_x_lenghh, first_y_height;
 
-
     // receive informations on FIRST rectangle from user
     cout << "Enter the information for the first rectangle" << endl;
     cout << "x-coordinate: ";
@@ -44,11 +43,9 @@ int main()
     cout << "height: ";
     cin >> second_height;
 
-
     // calculate rectangles location
     first_x_lenghh = first_x + first_length;
     first_y_height = first_y + first_height;
-
 
     if (((second_y - first_y) <= first_height) || ((first_y - second_y) <= second_height)) { // rectangle 1 and 2 are on the same range in y-aixes
         if (second_x >= first_x) {  // second_x is on the RIGHT side of first_x
@@ -107,4 +104,7 @@ int main()
     else {
         print_Do_Not_Intersect();
     }
+
+
+    return 0;
 }

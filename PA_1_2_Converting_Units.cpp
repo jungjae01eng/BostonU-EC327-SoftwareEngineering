@@ -27,6 +27,7 @@ int main()
         cin >> type;
     } while (type < 0 && type < 6);
 
+    // decimals to three decimal
     cout << setprecision(3) << fixed;
 
     if (type == 0)
@@ -77,6 +78,7 @@ int main()
         fahrenheit = (kelvin - 273.15) * 9 / 5 +32;
         cout << kelvin << " Kelvin is " << fahrenheit << " Fahrenheit. [Program Exits]" << endl;
     }
+
 
     return 0;
 }

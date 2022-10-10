@@ -10,21 +10,19 @@ using namespace std;
 
 bool draw;
 
-
 int drawcard() {
     // initialize random seed
     srand(time(NULL));
     int card = rand() % 12 + 2;
 
+
     return card;
 }
-
 
 int blackjack() {
     int card, new_card, total;
     char user;
     bool draw = true;
-
 
     cout << "Welcome to EC327 Blackjack" << endl;
     
@@ -36,7 +34,6 @@ int blackjack() {
     cout << "new card: " << new_card << endl;    
     cout << "Total: " << card << endl;
     
-
     while (draw && card < 21) {
         cout << "Draw Again (y/n): ";
         cin >> user;
@@ -56,7 +53,6 @@ int blackjack() {
         }
     }
 
-
     if (card == 21) {
         cout << "Total: " << card << endl;
         cout << "WON BLACKJACK [Program Exits]";
@@ -70,21 +66,22 @@ int blackjack() {
         cout << "YOU QUIT WITH " << card << " [Program Exits]";
     }
 
+
     return 0;
 }
-
 
 void error(int card) {
     cout << "Total: " << card << endl;
     cout << "ERROR OCCURED [Program Exits]" << endl;
 
+
     return;
 }
-
 
 int main()
 {
     blackjack();
+
 
     return 0;
 }

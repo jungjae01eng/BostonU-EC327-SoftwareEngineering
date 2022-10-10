@@ -11,11 +11,9 @@ int main() {
     // initializing number variable
     char user_input, encrypt;
 
-
     // user input
     cout << "Enter a letter: ";
     cin >> user_input;
-
 
     if ((user_input > 64) && (user_input < 91) || (user_input > 96) && (user_input < 123)) {    // user input is alphabet
         encrypt = user_input + 1;
@@ -25,7 +23,6 @@ int main() {
         if ((user_input > 96) && (user_input < 122)) {  // user input is in lowercase
             encrypt = encrypt - 32;
         }
-
         cout << "CRYPTO: " << encrypt << " [Program Exits]" << endl;
     }
     else {  // User input is NOT alphabet
