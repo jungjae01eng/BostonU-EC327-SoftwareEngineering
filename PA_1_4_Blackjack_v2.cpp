@@ -11,8 +11,7 @@ using namespace std;
 
 
 // Declare global variables
-int total, result;
-// bool draw;
+int total = 0, result = 0;
 
 
 int draw () {
@@ -25,26 +24,25 @@ int draw () {
 }
 
 
-int results (int) {
+void results (int) {
     if (total == 21) {
-        return 21;
+        result = 21;
     }
     else if (total > 21) {
-        return -1;
+        result = -1;
     }
     else if (total < 21) {
-        return total;
+        result = total;
     }
 
-    return 0;
+    return;
 }
 
 
 int blackjack(int num1, int num2) {
-    // -1 over 21, // 21 if is 21
     total = total + num1 + num2;
 
-    total = results(total);
+    results(total);
 
 
     return total;
@@ -56,14 +54,13 @@ int blackjack (int num1, char let2) {
 
     if (let2 == 'A') {
         num = 11;
-        total = total + num1 + num;
     }
     else if (let2 == 'J' || let2 == 'Q' || let2 == 'k') {
         num = 10;
-        total = total + num1 + num;
     }
 
-    total = results(total);
+    total = total + num1 + num;
+    results(total);
 
 
     return total;
@@ -75,14 +72,13 @@ int blackjack (char let1, int num2) {
 
     if (let1 == 'A') {
         num = 11;
-        total = total + num + num2;
     }
     else if (let1 == 'J' || let1 == 'Q' || let1 == 'k') {
         num = 10;
-        total = total + num + num2;
     }
 
-    total = results(total);
+    total = total + num + num2;
+    results(total);
 
 
     return total;
@@ -90,24 +86,36 @@ int blackjack (char let1, int num2) {
 
 
 int blackjack (char let1, char let2) {
-    int num, num_2;
+    int num_1, num_2;
+
+    // cout << let1 << endl;
+
 
     if (let1 == 'A') {
-        int num = 11;
+        num_1 = 11;
+        // cout << "num1:" << num_1 << endl;
     }
-    else if (let1 == 'J' || let1 == 'Q' || let1 == 'k') {
-        int num = 10;
-    }
-    else if (let2 == 'A') {
-        int num_2 = 11;
-    }
-    else if (let2 == 'J' || let2 == 'Q' || let2 == 'k') {
-        int num_2 = 10;
+    else if (let1 == 'J' || let1 == 'Q' || let1 == 'K') {
+        num_1 = 10;
+        // cout << "num1:" << num_1 << endl;
     }
 
-    total = total + num + num_2;
+    if (let2 == 'A') {
+        num_2 = 11;
+        // cout << "num2:" << num_2 << endl;
+    }
+    else if (let2 == 'J' || let2 == 'Q' || let2 == 'K') {
+        num_2 = 10;
+        // cout << "num2:" << num_2 << endl;
+    }
 
-    total = results(total);
+    // int y = num_1;
+    
+    total = total + num_1 + num_2;
+    // cout << "num_1: " << num_1 << endl;
+    // cout << "total: " << total << endl;
+
+    results(total);
 
 
     return total;
@@ -117,7 +125,7 @@ int blackjack (char let1, char let2) {
 int blackjack (int num1) {
     total = total + num1;
     
-    total = results(total);
+    results(total);
 
 
     return total;
@@ -126,50 +134,42 @@ int blackjack (int num1) {
 
 int blackjack (char let1) {
     int num;
+
     if (let1 == 'A') {
         num = 11;
     }
-    else if (let1 == 'J' || let1 == 'Q' || let1 == 'k') {
+    else if (let1 == 'J' || let1 == 'Q' || let1 == 'K') {
         num = 10;
     }
-    total = total + num;
 
-    total = results(total);
+    total = total + num;
+    results(total);
 
 
     return total;
 }
 
 
-// void error(int total) {
-//     cout << "Total: " << total << endl;
-//     cout << "ERROR OCCURED [Program Exits]" << endl;
-
-
-//     return;
-// }
-
-
 int main()
 {
-    int card, new_card;
-    int card1, card2;
+    // declare variables
+    int card, card1, card2;
     int num1 = 0, num2 = 0, num = 0;
-    char let1, let2;
+    char let1, let2, user;
 
-    char user;
-    // bool draw = true;
 
     cout << "Welcome to EC327 Blackjack" << endl;
 
 
-    // First draw
+    // first draw
     card1 = draw();
     card2 = draw();
 
-    // Test
-    cout << "card1: " << card1 << endl;
-    cout << "card2: " << card2 << endl;
+
+    // print the cards
+    // cout << "card1: " << card1 << endl;
+    // cout << "card2: " << card2 << endl;
+
 
     if ((card1 <= 10) && (card2 <= 10)) {
         // both cards are number
@@ -177,113 +177,88 @@ int main()
         num2 = card2;
         total = blackjack(num1, num2);
     }
-    else if ((card1 == 11 || card2 == 11)) {
-        if ((card1 == 11) && (card2 == 11)) {
-            // both cards are letter
-            let1 = 'A';
-            let2 = 'A';
-            total = blackjack(let1, let2);
+    else if ((card1 > 10 || card2 > 10)) {
+        if ((card1 == 11 || card2 == 11)) {
+            if ((card1 == 11) && (card2 == 11)) {
+                // both cards are letter
+                let1 = 'A';
+                let2 = 'A';
+                total = blackjack(let1, let2);
+            }
+            else if (card1 == 11) {
+                // first cards are letter and second cards are number
+                let1 = 'A';
+                num2 = card2;
+                total = blackjack(let1, num2);
+            }
+            else if (card2 == 11) {
+                // first cards are number and second cards are letter
+                num1 = card1;
+                let2 = 'A';
+                total = blackjack(card1, let1); 
+            }
         }
-        else if (card1 == 11) {
-            // first cards are letter and second cards are number
-            let1 = 'A';
-            num2 = card2;
-            total = blackjack(let1, num2);
-        }
-        else if (card2 == 11) {
-            // first cards are number and second cards are letter
-            num1 = card1;
-            let2 = 'A';
-            total = blackjack(card1, let1); 
-        }
-    }
-    else if (card1 == 12 || card2 == 12) {
-        if ((card1 == 12) && (card2 == 12)) {
-            // both cards are letter
-            let1 = 'J';
-            let2 = 'J';
-            total = blackjack(let1, let2);
-        }
-        else if (card1 == 12) {
-            // first cards are letter and second cards are number
-            let1 = 'J';
-            num2 = card2;
-            total = blackjack(let1, num2);
-        }
-        else if (card2 == 12) {
-            // first cards are number and second cards are letter
-            num1 = card1;
-            let2 = 'J';
-            total = blackjack(num1, let1); 
-        }
-    }
-    else if (card1 == 13) {
-        if ((card1 == 13) && (card2 == 13)) {
-            // both cards are letter
-            let1 = 'Q';
-            let2 = 'Q';
-            total = blackjack(let1, let2);
+        else if (card1 == 12 || card2 == 12) {
+            if ((card1 == 12) && (card2 == 12)) {
+                // both cards are letter
+                let1 = 'J';
+                let2 = 'J';
+                total = blackjack(let1, let2);
+            }
+            else if (card1 == 12) {
+                // first cards are letter and second cards are number
+                let1 = 'J';
+                num2 = card2;
+                total = blackjack(let1, num2);
+            }
+            else if (card2 == 12) {
+                // first cards are number and second cards are letter
+                num1 = card1;
+                let2 = 'J';
+                total = blackjack(num1, let1); 
+            }
         }
         else if (card1 == 13) {
-            // first cards are letter and second cards are number
-            let1 = 'Q';
-            num2 = card2;
-            total = blackjack(let1, num2);
-        }
-        else if (card2 == 13) {
-            // first cards are number and second cards are letter
-            num1 = card1;
-            let2 = 'Q';
-            total = blackjack(num1, let2); 
-        }
-    }
-    else if (card1 == 14) {
-        if ((card1 == 14) && (card2 == 14)) {
-            // both cards are letter
-            let1 = 'K';
-            let2 = 'K';
-            total = blackjack(let1, let2);
+            if ((card1 == 13) && (card2 == 13)) {
+                // both cards are letter
+                let1 = 'Q';
+                let2 = 'Q';
+                total = blackjack(let1, let2);
+            }
+            else if (card1 == 13) {
+                // first cards are letter and second cards are number
+                let1 = 'Q';
+                num2 = card2;
+                total = blackjack(let1, num2);
+            }
+            else if (card2 == 13) {
+                // first cards are number and second cards are letter
+                num1 = card1;
+                let2 = 'Q';
+                total = blackjack(num1, let2); 
+            }
         }
         else if (card1 == 14) {
-            // first cards are letter and second cards are number
-            let1 = 'K';
-            num2 = card2;
-            total = blackjack(let1, num2);
-        }
-        else if (card2 == 14) {
-            // first cards are number and second cards are letter
-            num1 = card1;
-            let2 = 'K';
-            total = blackjack(num1, let1); 
+            if ((card1 == 14) && (card2 == 14)) {
+                // both cards are letter
+                let1 = 'K';
+                let2 = 'K';
+                total = blackjack(let1, let2);
+            }
+            else if (card1 == 14) {
+                // first cards are letter and second cards are number
+                let1 = 'K';
+                num2 = card2;
+                total = blackjack(let1, num2);
+            }
+            else if (card2 == 14) {
+                // first cards are number and second cards are letter
+                num1 = card1;
+                let2 = 'K';
+                total = blackjack(num1, let1); 
+            }
         }
     }
-
-
-    // if ((card1 && card2) <= 10) {
-    //     // both cards are number
-    //     total = blackjack(int card1, int card2);
-    // }
-    // else if ((card1 <= 10) && (card2 > 10)) {
-    //     // first cards are number and second cards are letter
-    //     total = blackjack(int card1, char let1);
-    // }
-    // else if ((card1 > 10) && (card2 <= 10)) {
-    //     // first cards are letter and second cards are number
-    //     total = blackjack(char let1, int card1);
-    // }
-    // else if ((card1 && card2) > 10) {
-    //     // both cards are letter
-    //     total = blackjack(char let1, char let2);
-    // }
-
-    // card = blackjack();
-    // cout << card << endl;
-
-    // new_card = blackjack();
-    // card = card + new_card;
-
-    // cout << "new card: " << new_card << endl;    
-    // cout << "Total: " << card << endl;
 
 
     cout << "Total: " << total << endl;
@@ -291,15 +266,15 @@ int main()
 
     // Starting second draw
     do {
-        if (total == -1) {
-            cout << "You bust" << endl;
+        if (result == -1) {
+            cout << "You busted" << endl;
             loop = false;
         }
-        else if (total == 21) {
+        else if (result == 21) {
             cout << "WON BLACKJACK [Program Exits]" << endl;
             loop = false;
         }
-        else if ((total != -2) && (total != 21)) {
+        else if ((result != -2) && (result != 21)) {
             cout << "Draw Again (y/n): ";
             cin >> user;
         
@@ -309,7 +284,7 @@ int main()
             
 
                 // test
-                cout <<  "card: " << card << endl;
+                // cout <<  "card: " << card << endl;
 
 
                 if (card <= 10) {
@@ -340,7 +315,7 @@ int main()
                 cout << "Total: " << total << endl;
             }
             else if (user == 'n') {
-                cout << "YOU QUIT WITH " << total << "Program Exits" << endl;
+                cout << "YOU QUIT WITH " << total << " [Program Exits]" << endl;
                 loop = false;
             }
             else if (user != 'y' && user != 'n') {
@@ -351,24 +326,6 @@ int main()
             }
         }
     } while (loop);
-
-
-    // void error(int total);
-    //     }
-    // }
-
-
-    // if (total == 21) {
-    //     cout << "Total: " << card << endl;
-    //     cout << "WON BLACKJACK [Program Exits]";
-    // }
-    // else if (total > 21) {
-    //     cout << "Total: " << card << endl;
-    //     cout << "FAILED BLACKJACK [Program Exits]";
-    // }
-    // else if (total < 21) {
-    //     cout << "Total: " << card << endl;
-    //     cout << "YOU QUIT WITH " << card << " [Program Exits]";
 
 
     return 0;
