@@ -1,6 +1,7 @@
 // Jungjae Lee
 // Boston University College of Engineering
 // EC 327 Lab 3 Question 1
+// September 27, 2022
 
 
 #include <iostream>
