@@ -1,5 +1,6 @@
-// Boston University EC 327 Assignment 3
-// Project: P2 Range
+// Jungjae Lee
+// Boston University College of Engineering
+// EC 327 Lab 3 Question 2
 // September 27, 2022
 
 // The user should input three integers, start, stop, and step.
@@ -36,6 +37,7 @@ int main(void)
 		}
 		
 	}while();
-	return 0;
 	
+	
+	return 0;
 }
