@@ -1,47 +1,52 @@
 // Jungjae Lee
 // Boston University College of Engineering
-// EC 327 Lab 3 Question 1
+// EC 327 Lab 4 Question 2
 // October 4, 2022
 
 
 #include <iostream>
 
-
 using namespace std;
 
-int nandrfactor(int)
+int nandrfactor(int x)
+// individual n and r factorial calculation
 {
 	int counter = 1;
 	int num = 1;
-	//int num2 = 2;
 	
-	// First loop when num is 1, will be multiplied with num2, which is 2.
-	// Since if num is 1, it will stay 1 regardless of how many time num * num.
-	//num = num * num2;
-	//counter ++;
-
-	// Loop
-	while (counter != n)
-	{
-	num *= counter;
-	counter ++;
+	if (x <= 2) {
+		return x;
 	}
-	
+	else if (x > 2) {
+
+		// Loop
+		do
+		{
+			// counter ++;
+			// num *= counter;
+			num *= x;
+			x--;
+		} while (x != 0);
+	}
+
+
 	return num;
 }
 
 int nrfactor(int n, int r)
+// n minus r factorial calculation
 {
 	int counter = 1;
 	int num = 1;
-	nr = n - r;
+	int nr = n - r;
 
-	while (counter = nr)
+	do
 	{
 	num *= nr;
-	counter ++;
-	} 
-	
+	nr --;
+	} while (nr != 0);
+
+
 	return num;
 }
 
@@ -52,32 +57,58 @@ int calculation (int nfact, int rfact, int nrfact)
 	cal2 = rfact * nrfact;
 	cal = nfact / cal2;
 
+
 	return cal;
 }
 
 int main()
 {
 	// Initializing number vairable
-	int n;
-	int r;
+	int n, r;
+	char user;
+	bool repeat1, repeat2;
 
+	do {
 	// First Question to user
-	cout << "How many coins would you like to flip?" << endl;
+	cout << "How many coins would you like to flip? ";
 	cin >> n;
 
 	// Second Question to user
-	cout << "How many heads do you want?" << endl;
+	cout << "How many heads do you want? ";
 	cin >> r;
 
-	// Sending n and r to calculation function
-	int nfact = nandrfactor(n);
-	int rfact = nandrfactor(r)
-	int nrfact = nrfactor(n, r);
-	int cal = calculation(nfact, rfact, nrfact);
+		if (n >= 0 && r >= 0) {
+			// Sending n and r to calculation function
+			int nfact = nandrfactor(n);
+			int rfact = nandrfactor(r);
+			int nrfact = nrfactor(n, r);
+			int total = calculation(nfact, rfact, nrfact);
 	
-	cout << n << endl;
-	cout << r << endl;
-	cout << nfact << endl;
+			cout << "Flipping " << n << " coins, we can get " << r << " heads " << total << " ways." << endl;
+		}
+		else {
+			cout << "ERROR: n AND r HAS TO BE NON-NEGATIVE. PLEASE TRY AGAIN." << endl;
+		}
 
-	return 1;
+		do {
+			cout << "Flip again? (y/n) ";
+			cin >> user;
+
+			if (user == 'y') {
+				repeat1 = true;
+				repeat2 = false;
+			}
+			else if (user == 'n') {
+				repeat1 = false;
+				repeat2 = false;
+			}
+			else {
+				cout << "ERROR: PLEASE ENTER y FOR YES OR n FOR NO." << endl;
+				repeat2 = true;
+			}
+		} while (repeat2 == true);
+	} while (repeat1 == true);
+
+
+	return 0;
 }
