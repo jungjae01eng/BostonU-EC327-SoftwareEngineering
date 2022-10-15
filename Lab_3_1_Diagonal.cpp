@@ -1,6 +1,6 @@
 // Jungjae Lee
 // Boston University College of Engineering
-// EC 327 Lab 3
+// EC 327 Lab 3 Question 1
 
 
 #include <iostream>
