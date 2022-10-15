@@ -22,8 +22,6 @@ int nandrfactor(int x)
 		// Loop
 		do
 		{
-			// counter ++;
-			// num *= counter;
 			num *= x;
 			x--;
 		} while (x != 0);
@@ -42,8 +40,8 @@ int nrfactor(int n, int r)
 
 	do
 	{
-	num *= nr;
-	nr --;
+		num *= nr;
+		nr --;
 	} while (nr != 0);
 
 
