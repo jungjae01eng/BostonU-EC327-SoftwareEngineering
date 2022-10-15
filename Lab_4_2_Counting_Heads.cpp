@@ -1,6 +1,12 @@
+// Jungjae Lee
+// Boston University College of Engineering
+// EC 327 Lab 3 Question 1
+// October 4, 2022
+
+
 #include <iostream>
 
-	
+
 using namespace std;
 
 int nandrfactor(int)
