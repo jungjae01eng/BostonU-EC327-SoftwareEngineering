@@ -1,4 +1,10 @@
+// Jungjae Lee
+// Boston University College of Engineering
+// EC 327 Lab 3
+
+
 #include <iostream>
+
 using namespace std;
 
 int main(void)
