@@ -6,6 +6,7 @@
 
 #include <iostream>
 #include <math.h>
+#include <iomanip>
 
 using namespace std;
 
@@ -15,10 +16,8 @@ double series(int n){
 
     while(count != n){
         count++;
-        sum = sum + (2*count)/(3*count+2);
-        cout << count << " " << sum << endl;
+        sum = sum + (double)(2*count)/(3*count+2);
     }
-    cout << count << " " << sum << endl;
     return sum;
 }
 
@@ -41,7 +40,9 @@ int main(){
 
     seriesC = series(n);
 
+    cout << fixed << setprecision(4);
     cout << "Series(" << n << ") is: " << seriesC;
+
 
     return 0;
 }
