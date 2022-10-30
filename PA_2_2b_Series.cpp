@@ -4,9 +4,8 @@
 // October 30, 2022
 
 
-#include <iostream>
-#include <math.h>
-#include <iomanip>
+#include <iostream>  
+#include <iomanip>  // for setprecision
 
 using namespace std;
 
@@ -41,7 +40,7 @@ int main(){
     seriesC = series(n);
 
     cout << fixed << setprecision(4);
-    cout << "Series(" << n << ") is: " << seriesC;
+    cout << "Series(" << n << ") is: " << seriesC << endl;
 
 
     return 0;
