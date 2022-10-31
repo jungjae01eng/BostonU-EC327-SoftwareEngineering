@@ -5,7 +5,6 @@
 
 
 #include <iostream>  
-#include <iomanip>  // for setprecision
 
 using namespace std;
 
@@ -58,7 +57,6 @@ int main(){
 }
 
 
-
 int *ReverseMultiply(int *listArray, int size){
     int *mult = new int[size*2+1];
     int i = 0;
@@ -85,16 +83,23 @@ int *ReverseMultiply(int *listArray, int size){
 
 
     return mult;
-    delete []mult;
+    // delete []mult;
 }
 
 
 int *ReverseAdd(int *listArray, int size){
     int *add = new int[size*2-1];
-    for(int i = 0; i < size; i++){
+    int i = 0;
+    int j = size-1;
+
+    for(; i < size; i++){
         add[i] = listArray[i];
     }
+    for(; i < size*2-1; i++){
+        add[i] = listArray[j] + listArray[j-1];
+        j--;
+    }
 
-    return 0;
-    delete []add;
+    return add;
+    // delete []add;
 }
