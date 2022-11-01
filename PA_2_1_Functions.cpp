@@ -6,6 +6,10 @@
 
 #include <iostream>
 #include <math.h>
+#include <fstream>
+#include "PA_2_1_Functions.h"
+#include <stdlib.h>
+#include <time.h>
 using namespace std;
 
 
@@ -25,7 +29,7 @@ bool checkCode(char command){
 
     for (int i = 0; i < 32; i++) {
         if(command == possibility[i]){
-            cout << "yes" << endl;
+            // cout << "yes" << endl;
             if (possibility[i] == 'Q' || possibility[i] == 'q'){
                 return false;
             } else{
@@ -33,33 +37,33 @@ bool checkCode(char command){
             }
             return true;
         }
-        cout << i << possibility[i] << endl;
+        // cout << i << possibility[i] << endl;
     }
     return false;
 }
 
-// void writeDataToFile(const char*name){
-    
-// }
+void writeDataToFile(const char*file){
+    // write the output into the file
+    return;
+}
 
-// void readDatafromFile(const char* name){
-//     // read file
+void readDatafromFile(const char*file){
+    // read file
+    ifstream f;
+    f.open(file);
+    char c;
 
-//     ifstream f;
-//     f.open(name);
-//     char c;
-//     while (true){
-//         if (f.eof()){
-//             break;
-//         } else {
-//             cout << c << " ";
-//         }
-//     }
-//     cout << endl;
-//     f.close();
+    while (true){
+        if (f.eof()){
+            break;
+            cout << c << endl;
+        }
+    }
+    cout << endl;
+    f.close();
 
-//     return;
-// }
+    return;
+}
 
 int factorial(int p){
     // returns the factorial value of the given integer argument
@@ -138,8 +142,10 @@ double doMath(double p, char ch){
     }
 }
 
-double lucky(double){
+double lucky(double p){
     // returns a random number using the system time and the argument as a seed
+    srand(time(NULL));
+    double r = (double) rand() / (p+1);
 
-    return 0;
+    return r;
 }

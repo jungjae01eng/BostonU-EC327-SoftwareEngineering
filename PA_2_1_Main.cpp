@@ -4,10 +4,13 @@
 // October 30, 2022
 
 
-#include <iostream>  
-#include <iomanip>  // for setprecision
-#include "PA_2_1_Functions.h"
+#include <iostream>
+#include <math.h>
 #include <fstream>
+#include "PA_2_1_Functions.h"
+#include <stdlib.h>
+#include <time.h>
+#include <iomanip>
 
 using namespace std;
 
@@ -26,8 +29,10 @@ int main(){
     double pdouble;
     char pchar;
     int delta = 0;
+    char *file;
 
-    cout << setprecision(2) << endl;
+
+    cout << setprecision(2) << fixed;
     
     cout << "-----" << endl;
     initialize(ENTRIES);
@@ -127,15 +132,19 @@ int main(){
             cout << printint << endl;
 
 
+        // Getting an string error but I do not have string.
         // } else if (command == "I" || command == "i"){
         //     // Read from Input file
         //     cout << "Please write the file name in following format ("filename.txt"): ";
-        //     cin >> pchar;
-        //     readDatafromFile(*pchar);
+        //     cin >> file;
+        //     readDatafromFile(file);
 
         // } else if (command == "O" || command == "o"){
         //     // Read from Output file
-            
+        //     cout << "Please write the file name in following format ("filename.txt"): ";
+        //     cin >> file;
+        //     writeDataToFile(file);
+        
         }
 
         cout << "pass: " << pass << endl;
