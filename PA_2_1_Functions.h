@@ -5,10 +5,10 @@
 
 
 // prototyped
-void initialize();
+void initialize(int);
 bool checkCode(char);
-void writeDataToFile(const char*);
-void readDatafromFile(const char*);
+// void writeDataToFile(const char*);
+// void readDatafromFile(const char*);
 int factorial(int);
 int fibonacci(int);
 double findSqrtValue(double);

@@ -36,9 +36,6 @@ int main(){
             cout << "Error Occured. Please enter two positive integers." << endl;
             pass = true;
         }
-        else {
-            pass = false;
-        }
     } while (pass);
 
     gcdC = gcd(m, n);
