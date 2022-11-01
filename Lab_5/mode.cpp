@@ -19,7 +19,8 @@ void findModes (int input[], int size, int& frequency, int result[], int& result
 	do {
 		i++;
 
-		do { // each input compare each inputsave
+		do { 
+			// each input compare each inputsave
 			if (i >= counter) {
 				if (input[i] != inputsave[counter]) {
 					counter ++;
@@ -46,17 +47,9 @@ void findModes (int input[], int size, int& frequency, int result[], int& result
 		if (inputcount[counter] >= inputcount[counter2]) {
 			result[counter] = inputcounter[counter];
 			counter++;
-		
+		}
+	} while (true);	
 			
 
-
-
-
 return;
-}
-
-
-int main()
-{
-
 }

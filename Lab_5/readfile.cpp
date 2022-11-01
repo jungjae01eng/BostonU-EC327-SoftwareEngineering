@@ -23,8 +23,3 @@ void readFiletoArray(const char* filename, int* data){
 
 return;
 }
-
-int main()
-{
-
-}
